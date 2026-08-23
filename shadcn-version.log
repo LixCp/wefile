@@ -1,0 +1,72 @@
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 2, reused 2, downloaded 0, added 0
+Progress: resolved 5, reused 5, downloaded 0, added 0
+Progress: resolved 11, reused 11, downloaded 0, added 0
+Progress: resolved 14, reused 14, downloaded 0, added 0
+Progress: resolved 22, reused 22, downloaded 0, added 0
+ WARN  GET https://package-mirror.liara.ir/repository/npm/diff error (ECONNRESET). Will retry in 10 seconds. 2 retries left.
+Progress: resolved 28, reused 28, downloaded 0, added 0
+Progress: resolved 30, reused 30, downloaded 0, added 0
+Progress: resolved 31, reused 30, downloaded 0, added 0
+Progress: resolved 31, reused 31, downloaded 0, added 0
+Progress: resolved 32, reused 32, downloaded 0, added 0
+Progress: resolved 33, reused 33, downloaded 0, added 0
+Progress: resolved 34, reused 33, downloaded 0, added 0
+Progress: resolved 34, reused 34, downloaded 0, added 0
+Progress: resolved 47, reused 47, downloaded 0, added 0
+Progress: resolved 65, reused 65, downloaded 0, added 0
+Progress: resolved 87, reused 87, downloaded 0, added 0
+Progress: resolved 95, reused 95, downloaded 0, added 0
+ WARN  GET https://package-mirror.liara.ir/repository/npm/cli-cursor error (ECONNRESET). Will retry in 10 seconds. 2 retries left.
+ WARN  GET https://package-mirror.liara.ir/repository/npm/strip-ansi error (ECONNRESET). Will retry in 10 seconds. 2 retries left.
+ WARN  GET https://package-mirror.liara.ir/repository/npm/eventsource-parser error (ECONNRESET). Will retry in 10 seconds. 2 retries left.
+Progress: resolved 102, reused 101, downloaded 0, added 0
+Progress: resolved 107, reused 106, downloaded 0, added 0
+Progress: resolved 118, reused 116, downloaded 1, added 0
+Progress: resolved 127, reused 123, downloaded 1, added 0
+Progress: resolved 132, reused 129, downloaded 2, added 0
+Progress: resolved 139, reused 135, downloaded 2, added 0
+Progress: resolved 151, reused 147, downloaded 2, added 0
+Progress: resolved 178, reused 154, downloaded 2, added 0
+Progress: resolved 192, reused 154, downloaded 2, added 0
+Progress: resolved 209, reused 155, downloaded 2, added 0
+Progress: resolved 223, reused 163, downloaded 2, added 0
+Progress: resolved 234, reused 172, downloaded 2, added 0
+Progress: resolved 250, reused 180, downloaded 2, added 0
+Progress: resolved 271, reused 188, downloaded 2, added 0
+ WARN  GET https://package-mirror.liara.ir/repository/npm/chalk error (ECONNRESET). Will retry in 10 seconds. 2 retries left.
+Progress: resolved 277, reused 206, downloaded 2, added 0
+Progress: resolved 286, reused 228, downloaded 2, added 0
+Progress: resolved 297, reused 243, downloaded 2, added 0
+Progress: resolved 298, reused 262, downloaded 2, added 0
+Progress: resolved 298, reused 272, downloaded 3, added 0
+Progress: resolved 298, reused 276, downloaded 3, added 0
+Progress: resolved 299, reused 282, downloaded 3, added 0
+Progress: resolved 299, reused 294, downloaded 4, added 0
+Progress: resolved 299, reused 294, downloaded 5, added 0
+ WARN  GET https://package-mirror.liara.ir/repository/npm/fill-range error (ERR_SOCKET_TIMEOUT). Will retry in 10 seconds. 2 retries left.
+Progress: resolved 300, reused 294, downloaded 5, added 0
+Progress: resolved 302, reused 297, downloaded 5, added 0
+ WARN  GET https://package-mirror.liara.ir/repository/npm/chalk error (ERR_SOCKET_TIMEOUT). Will retry in 1 minute. 1 retries left.
+Progress: resolved 303, reused 297, downloaded 5, added 0
+Progress: resolved 303, reused 298, downloaded 5, added 0
+Progress: resolved 304, reused 299, downloaded 5, added 0
+Progress: resolved 309, reused 304, downloaded 5, added 0
+ WARN  GET https://package-mirror.liara.ir/repository/npm/is-unicode-supported error (ECONNRESET). Will retry in 10 seconds. 2 retries left.
+Progress: resolved 310, reused 304, downloaded 5, added 0
+Packages: +310
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 310, reused 305, downloaded 5, added 19
+Progress: resolved 310, reused 305, downloaded 5, added 20
+Progress: resolved 310, reused 305, downloaded 5, added 44
+Progress: resolved 310, reused 305, downloaded 5, added 119
+Progress: resolved 310, reused 305, downloaded 5, added 168
+Progress: resolved 310, reused 305, downloaded 5, added 172
+Progress: resolved 310, reused 305, downloaded 5, added 173
+Progress: resolved 310, reused 305, downloaded 5, added 226
+Progress: resolved 310, reused 305, downloaded 5, added 250
+Progress: resolved 310, reused 305, downloaded 5, added 251
+Progress: resolved 310, reused 305, downloaded 5, added 307
+Progress: resolved 310, reused 305, downloaded 5, added 309
+Progress: resolved 310, reused 305, downloaded 5, added 310, done
+4.19.0
