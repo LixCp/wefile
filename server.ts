@@ -12,15 +12,26 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
-  const hhtpServer = createServer((req, res) => handle(req, res));
-  const io = new Server(hhtpServer);
+  const httpServer = createServer((req, res) => {
+    // Let Socket.IO's own request listener handle its own paths.
+    if (req.url?.startsWith("/socket.io")) {
+      return;
+    }
+    return handle(req, res);
+  });
+
+  const io = new Server(httpServer, {
+    path: "/socket.io/",
+  });
   globalThis.io = io;
+
   io.on("connection", (socket: Socket) => {
     socket.on("register", () => {
       socket.emit("registered", "hello");
     });
   });
-  hhtpServer.listen(port, () => {
-    console.log(`> آماده روی http://localhost:${port}`);
+
+  httpServer.listen(port, () => {
+    console.log(`> Ready on http://localhost:${port}`);
   });
 });
