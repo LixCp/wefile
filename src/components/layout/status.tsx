@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
 import { Badge } from "../ui/badge";
+import { useSocket } from "@/hooks/useSocket";
 
 export function Status() {
-  const [connected, setConnected] = useState<boolean | null>(true);
+  const {connected} = useSocket()
   return (
     <Badge
       variant="outline"
