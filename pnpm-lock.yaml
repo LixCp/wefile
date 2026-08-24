@@ -41,6 +41,9 @@ importers:
       tailwind-merge:
         specifier: ^3.6.0
         version: 3.6.0
+      tsc:
+        specifier: ^2.0.4
+        version: 2.0.4
       tsx:
         specifier: ^4.23.12
         version: 4.23.12
@@ -2981,6 +2984,11 @@ packages:
 
   ts-morph@26.0.0:
     resolution: {integrity: sha512-ztMO++owQnz8c/gIENcM9XfCEzgoGphTv+nKpYNM1bgsdOVC/jRZuEBf6N+mLLDNg68Kl+GgUZfOySaRiG1/Ug==, tarball: https://package-mirror.liara.ir/artifactory/api/npm/npm/ts-morph/-/ts-morph-26.0.0.tgz}
+
+  tsc@2.0.4:
+    resolution: {integrity: sha512-fzoSieZI5KKJVBYGvwbVZs/J5za84f2lSTLPYf6AGiIf43tZ3GNrI1QzTLcjtyDDP4aLxd46RTZq1nQxe7+k5Q==, tarball: https://package-mirror.liara.ir/artifactory/api/npm/npm/tsc/-/tsc-2.0.4.tgz}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+    hasBin: true
 
   tsconfig-paths@3.15.0:
     resolution: {integrity: sha512-2Ac2RgzDe/cn48GvOe3M+o82pEFewD3UPbyoUHHdKasHwJKjds4fLXWf/Ux5kATBKN20oaFGu+jbElp1pos0mg==, tarball: https://package-mirror.liara.ir/artifactory/api/npm/npm/tsconfig-paths/-/tsconfig-paths-3.15.0.tgz}
@@ -6272,6 +6280,8 @@ snapshots:
     dependencies:
       '@ts-morph/common': 0.27.0
       code-block-writer: 13.0.3
+
+  tsc@2.0.4: {}
 
   tsconfig-paths@3.15.0:
     dependencies:
