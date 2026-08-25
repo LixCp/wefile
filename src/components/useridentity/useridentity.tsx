@@ -4,12 +4,12 @@ import { Copy } from "lucide-react";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { useToast } from "@/hooks/useToast";
+import { useIdentity } from "@/hooks/useIdentitiy";
 export function UserIdentity() {
   const {toast} = useToast()
-  const displayCode = "--------";
-  const handelclick =()=>{
-    toast({title:"کلیک شد اوکیهههههه"})
-  } 
+  const {code , copyCode} = useIdentity()
+  const displayCode = code ?? "--------";
+
   return (
     <Card className="my-10 border-deep-teal bg-night-slate">
       <CardHeader className="pb-3">
@@ -21,14 +21,14 @@ export function UserIdentity() {
       <CardContent>
         <div dir="ltr" className="flex justify-center gap-1.5 my-1.5">
           {displayCode.split("").map((digit, index) => (
-            <div className="h-12 w-9 flex items-center justify-center rounded-lg border border-deep-teal bg-[#121821] font-mono text-2xl font-bold text-cprimary [text-shadow:0_0_12px_rgba(79,227,193,0.45)">
+            <div key={index} className="h-12 w-9 flex items-center justify-center rounded-lg border border-deep-teal bg-[#121821] font-mono text-2xl font-bold text-cprimary [text-shadow:0_0_12px_rgba(79,227,193,0.45)">
               {digit}
             </div>
           ))}
         </div>
         <div className="flex justify-center">
           <Button
-            onClick={handelclick}
+            onClick={copyCode}
             variant="outline"
             size="sm"
             className="gap-2 border-deep-teal bg-transparent text-silver-mist hover:bg-[#121821] hover:text-[#e7edf3]"
