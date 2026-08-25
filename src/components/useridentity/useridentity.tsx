@@ -3,9 +3,13 @@
 import { Copy } from "lucide-react";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-
+import { useToast } from "@/hooks/useToast";
 export function UserIdentity() {
+  const {toast} = useToast()
   const displayCode = "--------";
+  const handelclick =()=>{
+    toast({title:"کلیک شد اوکیهههههه"})
+  } 
   return (
     <Card className="my-10 border-deep-teal bg-night-slate">
       <CardHeader className="pb-3">
@@ -24,6 +28,7 @@ export function UserIdentity() {
         </div>
         <div className="flex justify-center">
           <Button
+            onClick={handelclick}
             variant="outline"
             size="sm"
             className="gap-2 border-deep-teal bg-transparent text-silver-mist hover:bg-[#121821] hover:text-[#e7edf3]"

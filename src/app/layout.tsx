@@ -1,6 +1,7 @@
 import type {Metadata} from "next";
 import {Geist, Geist_Mono, Vazirmatn} from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/toast";
 
 
 const vazirMatn = Vazirmatn({
@@ -30,7 +31,10 @@ export default function RootLayout({children}: LayoutProps<"/">) {
             dir="rtl"
             className={`${geistSans.variable} ${vazirMatn.variable} ${geistMono.variable} h-full antialiased`}
         >
-        <body className="min-h-full flex flex-col">{children}</body>
+        <body className="min-h-full flex flex-col">
+            {children}
+            <Toaster />
+            </body>
         </html>
     );
 }
