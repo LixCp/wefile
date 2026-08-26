@@ -13,8 +13,8 @@ export function UserIdentity() {
   return (
     <Card className="my-10 border-deep-teal bg-night-slate">
       <CardHeader className="pb-3">
-        <CardTitle className="flex items-center gap-2 text-silver-mist text-sm">
-          <span className="w-1 h-4 rounded-sm bg-cprimary"></span>
+        <CardTitle className="flex items-center gap-2 text-silver-mist text-xs font-vazir-matn">
+          <span className="w-1 h-4 rounded-sm bg-cprimary" />
           شناسه شما
         </CardTitle>
       </CardHeader>

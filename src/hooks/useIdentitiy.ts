@@ -27,10 +27,14 @@ export function useIdentity() {
       active = false;
     };
   }, [toast]);
-  const copyCode = useCallback(() => {
+  const copyCode = useCallback(async () => {
     if (!code) return;
-    navigator.clipboard.writeText(code);
-    toast({ title: "✨ کد آماده‌ست، بچسبونش هر جا دوست داری" });
+    try {
+      await navigator.clipboard.writeText(code);
+      toast({ title: "✨ کد آماده‌ست، بچسبونش هر جا دوست داری" });
+    } catch {
+      toast({ title: "کپی ناموفق بود", description: "دسترسی کلیپ‌بورد در دسترس نیست" });
+    }
   }, [code, toast]);
   return { code, copyCode };
 }

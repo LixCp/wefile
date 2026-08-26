@@ -1,32 +1,43 @@
 "use client";
 
 import { io, type Socket } from "socket.io-client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+
+/**
+ * Singleton socket shared across every consumer of useSocket().
+ * Prevents opening one WebSocket per component.
+ */
+let sharedSocket: Socket | null = null;
+
+function getSocket(): Socket {
+  if (!sharedSocket) {
+    sharedSocket = io({ path: "/socket.io/" });
+  }
+  return sharedSocket;
+}
 
 export function useSocket() {
   const [connected, setConnected] = useState(false);
-  const socketRef = useRef<Socket | null>(null);
 
   useEffect(() => {
-    const socket = io({ path: "/socket.io/" });
-    socketRef.current = socket;
+    const socket = getSocket();
 
-    socket.on("connect", () => {
-      socket.emit("hello", "world");
+    const onConnect = () => setConnected(true);
+    const onDisconnect = () => setConnected(false);
+
+    socket.on("connect", onConnect);
+    socket.on("disconnect", onDisconnect);
+
+    // Sync initial state in case the socket already connected earlier.
+    if (socket.connected) {
       setConnected(true);
-    });
-    socket.on("disconnect", () => setConnected(false));
+    }
 
     return () => {
-      socket.disconnect();
-      socketRef.current = null;
-      setConnected(false);
+      socket.off("connect", onConnect);
+      socket.off("disconnect", onDisconnect);
     };
   }, []);
 
-  return {
-    socket: socketRef.current,
-    socketRef,
-    connected,
-  };
+  return { connected };
 }
