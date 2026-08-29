@@ -1,10 +1,10 @@
 import { Wrapper } from "@/components/layout/wrapper";
-import { UserIdentity } from "@/components/useridentity/useridentity";
+import { TransferWorkspace } from "@/components/transfer/transfer-workspace";
 
 export default function Home() {
   return (
     <Wrapper>
-      <UserIdentity />
+      <TransferWorkspace />
     </Wrapper>
   );
 }

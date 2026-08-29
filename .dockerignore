@@ -1,0 +1,13 @@
+node_modules
+.next
+.git
+.gitignore
+.idea
+build
+coverage
+*.log
+*.zip
+*.tsbuildinfo
+README.md
+AGENTS.md
+scripts/smoke-signaling.mjs

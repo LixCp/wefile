@@ -1,15 +1,18 @@
 "use client";
 
 import { io, type Socket } from "socket.io-client";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
+import type { ClientToServerEvents, ServerToClientEvents } from "@/lib/socket-events";
 
 /**
  * Singleton socket shared across every consumer of useSocket().
  * Prevents opening one WebSocket per component.
  */
-let sharedSocket: Socket | null = null;
+export type AppSocket = Socket<ServerToClientEvents, ClientToServerEvents>;
 
-function getSocket(): Socket {
+let sharedSocket: AppSocket | null = null;
+
+export function getSocket(): AppSocket {
   if (!sharedSocket) {
     sharedSocket = io({ path: "/socket.io/" });
   }
@@ -17,27 +20,21 @@ function getSocket(): Socket {
 }
 
 export function useSocket() {
-  const [connected, setConnected] = useState(false);
+  const connected = useSyncExternalStore(
+    (onStoreChange) => {
+      const socket = getSocket();
+      socket.on("connect", onStoreChange);
+      socket.on("disconnect", onStoreChange);
+      // Sync initial value in case the socket already connected earlier.
+      if (socket.connected) queueMicrotask(onStoreChange);
+      return () => {
+        socket.off("connect", onStoreChange);
+        socket.off("disconnect", onStoreChange);
+      };
+    },
+    () => getSocket().connected,
+    () => false,
+  );
 
-  useEffect(() => {
-    const socket = getSocket();
-
-    const onConnect = () => setConnected(true);
-    const onDisconnect = () => setConnected(false);
-
-    socket.on("connect", onConnect);
-    socket.on("disconnect", onDisconnect);
-
-    // Sync initial state in case the socket already connected earlier.
-    if (socket.connected) {
-      setConnected(true);
-    }
-
-    return () => {
-      socket.off("connect", onConnect);
-      socket.off("disconnect", onDisconnect);
-    };
-  }, []);
-
-  return { connected };
+  return { connected, socket: getSocket() };
 }

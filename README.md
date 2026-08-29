@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WeFile
 
-## Getting Started
+اشتراک‌گذاری مستقیم فایل بین دو نفر با شناسه اختصاصی — Next.js 16 + React 19 + Socket.IO + WebRTC.
 
-First, run the development server:
+## How it works
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- هر مرورگر یک شناسه ۸ نویسی می‌گیرد و با رویداد ``identity:register`` روی سرور ثبتش می‌کند (``server.ts``).
+- سرور فقط نقش **signaling** دارد: ثبت شناسه، رله‌ی SDP offer/answer و ICE candidates. هیچ فایلی از سرور عبور نمی‌کند.
+- فایل‌ها بین دو مرورگر روی یک ``RTCDataChannel`` رمزنگاری‌شده منتقل می‌شوند (chunked با backpressure)، منطق در ``src/hooks/useFileTransfer.ts``.
+- گیرنده پنل پذیرش/رد شدن می‌بیند؛ پیشرفت انتقال در فهرست «انتقال‌ها» نمایش داده می‌شود و خروجی لینک دانلود می‌شود.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Getting started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+````
+pnpm install
+pnpm dev        # tsx watch server.ts — custom server + Socket.IO on port 3000
+````
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+````
+pnpm build
+pnpm start      # NODE_ENV=production tsx server.ts
+pnpm lint       # eslint
+pnpm typecheck  # tsc --noEmit
+node scripts/smoke-signaling.mjs 3000   # signaling end-to-end test (needs running server)
+````
 
-## Learn More
+## WebRTC notes
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- ترافیک فایل مستقیماً P2P است؛ اگر یکی از طرف‌ها پشت NAT سخت‌گیرانه باشد به **TURN server** نیاز دارید. لیست ICE servers را در ``ICE_SERVERS`` داخل ``src/hooks/useFileTransfer.ts`` تنظیم کنید (مثلاً coturn خودتان).
+- فایل در حافظه‌ی مرورگر گیرنده مونتاژ می‌شود؛ محدودیت فعلی ۵۱۲ مگابایت است (``MAX_FILE_SIZE``).

@@ -3,11 +3,13 @@
 import { Copy } from "lucide-react";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { useToast } from "@/hooks/useToast";
-import { useIdentity } from "@/hooks/useIdentitiy";
-export function UserIdentity() {
-  const {toast} = useToast()
-  const {code , copyCode} = useIdentity()
+export function UserIdentity({
+  code,
+  copyCode,
+}: {
+  code: string | null;
+  copyCode: () => Promise<void>;
+}) {
   const displayCode = code ?? "--------";
 
   return (
